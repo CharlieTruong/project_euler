@@ -32,3 +32,10 @@ describe Problem4 do
   end
 end
 
+describe Problem5 do
+  describe '#solution' do
+    it 'returns the smallest number that is divisible by all numbers from 1 to a max value' do
+      expect(Problem5.new.solution(10)).to eq(2520)
+    end
+  end
+end

@@ -115,3 +115,23 @@ class Problem4
   end
 end
 
+class Problem5
+  def solution(max_divisor)
+    current_num = max_divisor
+    while !all_divisible?(current_num, max_divisor)
+      current_num += max_divisor
+    end
+    current_num
+  end
+
+  private
+
+  def all_divisible?(current_num, max_divisor)
+    divisible = true
+    (1..max_divisor).each do |divisor|
+        divisible = (current_num % divisor).zero?
+        break if !divisible
+    end
+    divisible
+  end
+end
