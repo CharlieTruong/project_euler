@@ -135,3 +135,10 @@ class Problem5
     divisible
   end
 end
+
+#Euler Solutions
+# p Problem1.new.solution(1000) #=>233168
+# p Problem2.new.solution(4000000) #=> 4613732
+# p Problem3.new.solution(600851475143) #=> 6857
+# p Problem4.new.solution(3) #=> 906609
+# p Problem5.new.solution(20) #=> 232792560
