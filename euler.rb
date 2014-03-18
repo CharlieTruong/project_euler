@@ -28,3 +28,38 @@ class Problem2
   end
 end
 
+class Problem3
+  def solution(number)
+    prime_factors = Array.new
+    current_prime = 2
+    while current_prime <= number
+      prime_factors.push(current_prime) if divisible?(number, current_prime)
+      number = number / current_prime while divisible?(number, current_prime)
+      current_prime = next_prime(current_prime)
+    end
+    prime_factors.max
+  end
+
+  private
+
+  def next_prime(current_num) 
+    potential_prime = current_num + 1
+    potential_prime += 1 until is_prime?(potential_prime)
+    potential_prime
+  end
+
+  def is_prime?(num)
+    prime = true
+    (2...num).each do |factor|
+      prime = !divisible?(num, factor)
+      break if !prime
+    end
+    prime 
+  end
+
+  def divisible?(num, factor)
+    (num % factor).zero?
+  end
+end
+
+

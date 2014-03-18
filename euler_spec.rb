@@ -16,4 +16,12 @@ describe Problem2 do
   end
 end
 
+describe Problem3 do
+  describe '#solution' do
+    it 'returns the largest prime factor for a given number' do
+      expect(Problem3.new.solution(13195)).to eq(29)
+    end
+  end
+end
+
 
