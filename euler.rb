@@ -10,3 +10,21 @@ class Problem1
   end
 end
 
+class Problem2
+  def solution(max_value)
+    fibonacci(max_value).select{|num| num.even?}.reduce(:+)
+  end
+
+  private
+
+  def fibonacci(max_value, sequence = [1,2])
+    next_fibonacci = sequence.last(2).reduce(:+)
+    if next_fibonacci > max_value
+      sequence
+    else
+      sequence.push(next_fibonacci)
+      fibonacci(max_value, sequence)
+    end
+  end
+end
+

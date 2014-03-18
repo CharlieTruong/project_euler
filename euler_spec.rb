@@ -8,3 +8,12 @@ describe Problem1 do
   end  
 end
 
+describe Problem2 do
+  describe '#solution' do
+    it 'returns the sum of the even numbers in the Fibonacci sequence up to a given number' do
+      expect(Problem2.new.solution(100)).to eq(44)
+    end
+  end
+end
+
+
