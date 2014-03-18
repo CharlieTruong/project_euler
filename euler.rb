@@ -63,3 +63,55 @@ class Problem3
 end
 
 
+
+class Problem4
+  def solution(digit_count)
+    potential_num = max_num(digit_count)
+    found = false
+    while !found
+      potential_num = next_palindromic_num(potential_num)
+      found = true if valid_factors?(potential_num, digit_count)
+    end
+    potential_num
+  end
+
+  private
+
+  def next_palindromic_num(number)
+    next_number = number - 1
+    next_number -= 1 until palindromic?(next_number)
+    next_number
+  end
+
+  def palindromic?(number)
+    number == number.to_s.reverse.to_i    
+  end
+
+  def max_num(digit_count)
+    num1 = (10 ** digit_count) - 1
+    num2 = (10 ** digit_count) - 2
+    num1 * num2
+  end
+
+  def valid_factors?(number, digit_count)
+    possible_factor = (10 ** digit_count) - 1
+    factors = Array.new
+    while factors.length < 2
+      if (number % possible_factor).zero?
+        factors.push(possible_factor, number / possible_factor)
+      else
+        possible_factor -= 1
+      end
+    end
+    within_bounds?(factors, digit_count)
+  end
+
+  def within_bounds?(factors, digit_count)
+    upper_limit = (10 ** digit_count) - 1
+    lower_limit =  10 ** (digit_count - 1)
+    first_test = factors.first >= lower_limit && factors.first <= upper_limit
+    second_test = factors.last >= lower_limit && factors.last <= upper_limit
+    first_test && second_test
+  end
+end
+

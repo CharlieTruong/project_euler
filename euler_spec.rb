@@ -24,4 +24,11 @@ describe Problem3 do
   end
 end
 
+describe Problem4 do
+  describe '#solution' do
+    it 'returns the largest palindromic number based on the product of two numbers of a given digit' do
+      expect(Problem4.new.solution(2)).to eq(9009)
+    end
+  end
+end
 
